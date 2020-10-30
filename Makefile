@@ -18,14 +18,20 @@ lib-dynamic : libjulius.so
 # Dynamically linked executables
 debug.exe : lib-dynamic
 	gcc $(CFLAGS) examples/cesar.c -o build/cesar_debug.exe $(LDFLAGS) -D"DEBUG=true"
+	gcc $(CFLAGS) examples/cipher.c -o build/cipher_debug.exe $(LDFLAGS) -D"DEBUG=true"
+	
 .exe : lib-dynamic
 	gcc $(CFLAGS) examples/cesar.c -o build/cesar.exe $(LDFLAGS)
+	gcc $(CFLAGS) examples/cipher.c -o build/cipher.exe $(LDFLAGS)
 
 # Statically linked executables
 static.exe : lib-static
 	gcc $(CFLAGS) -static examples/cesar.c -o build/cesar_static.exe $(LDFLAGS)
+	gcc $(CFLAGS) -static examples/cipher.c -o build/cipher_static.exe $(LDFLAGS)
+
 debug_static.exe : lib-static
 	gcc $(CFLAGS) -static examples/cesar.c -o build/cesar_debug_static.exe $(LDFLAGS) -D"DEBUG=true"
+	gcc $(CFLAGS) -static examples/cipher.c -o build/cipher_debug_static.exe $(LDFLAGS) -D"DEBUG=true"
 
 #----------------------Libraries---------------------------
 # Dynamic library
